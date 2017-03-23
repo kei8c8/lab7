@@ -257,16 +257,22 @@ int main(int argc, char *argv[]) {
 		x++; //increments to next command-line argument
 	}
 
+	int flagg=0;
 	if(flag1 != 1){ //if no command-line arguments found for methods
+		while(flagg!=1){
 			do{
 				cout << "Options: \n" << "1) Offset\n" << "2) Scale\n"
 					 << "3) Center\n" << "4) Normalize\n" << "5) Statistics\n"
-					 << endl;
+					 << "6)Done" << endl;
 
 				cout << "Please enter the number of your choice above: ";
 				cin >> choice; //user selects option
 
-				if(choice<1 || choice>5){
+				if(choice == 6){
+					flagg=1;
+				}
+
+				if(choice<1 || choice>6){
 					flag3 = 0; //keep looping
 				}
 				else{
@@ -301,6 +307,7 @@ int main(int argc, char *argv[]) {
 				break;
 		}//end of switch
 	}//end of flag != 1
+	}
 
 	string filenam = "NewFile.txt"; //file name to create in Save_file
 
@@ -352,6 +359,8 @@ Signal operator+(Signal &ob1,Signal &ob2){
 	double max1=0;
 	double max2=0;
 
+	cout<< "test";
+
 	if(ob1.length != ob2.length){ //makes sure same length
 		cout << "\nError. Only objects of same length can be added." << endl;
 		exit(0);
@@ -372,6 +381,7 @@ Signal operator+(Signal &ob1,Signal &ob2){
 	}
 
 	sum.average_calc(); //calculates average of new signal_data
+
 
 	return sum;
 }
